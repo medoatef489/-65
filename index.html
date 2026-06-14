@@ -2,11 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أسئلة أكمل | الفصل الخامس - تأخر الكلام</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -17,274 +15,243 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-            color: var(--text-primary);
-            transition: background 0.3s ease, color 0.2s ease;
+            transition: all 0.3s ease;
             padding: 2rem 1rem;
             min-height: 100vh;
         }
 
-        /* Light mode (default) */
-        :root {
-            --bg-start: #f0f4f8;
-            --bg-end: #e2e8f0;
-            --card-bg: #ffffff;
-            --card-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
-            --text-primary: #0f2b3d;
-            --text-secondary: #2c5270;
-            --border: #e2edf2;
-            --input-bg: #ffffff;
-            --input-border: #cbd5e1;
-            --focus-color: #2c7da0;
-            --btn-bg: #2c7da0;
+        /* الوان الوضع النهاري */
+        body.light {
+            --bg: #f0f4f8;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-light: #475569;
+            --border: #cbd5e1;
+            --input: #ffffff;
+            --btn: #2c7da0;
             --btn-hover: #1f5e7a;
-            --correct-bg: #e0f2e9;
-            --correct-border: #1e7b48;
-            --wrong-bg: #ffe6e5;
-            --wrong-border: #c73e2d;
-            --header-bg: rgba(255,255,255,0.85);
-            --footer-text: #5a6e7c;
-            --icon-color: #1e4a6e;
+            --correct: #166534;
+            --correct-bg: #dcfce7;
+            --wrong: #b91c1c;
+            --wrong-bg: #fee2e2;
+            --header: #ffffff;
+            background: var(--bg);
+            color: var(--text);
         }
 
+        /* الوان الوضع الليلي */
         body.dark {
-            --bg-start: #0f1724;
-            --bg-end: #111827;
-            --card-bg: #1e293b;
-            --card-shadow: 0 20px 30px -8px rgba(0,0,0,0.5);
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e6;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --text-light: #94a3b8;
             --border: #334155;
-            --input-bg: #0f172a;
-            --input-border: #475569;
-            --focus-color: #3b82f6;
-            --btn-bg: #3b82f6;
+            --input: #0f172a;
+            --btn: #3b82f6;
             --btn-hover: #2563eb;
+            --correct: #4ade80;
             --correct-bg: #14532d;
-            --correct-border: #4ade80;
+            --wrong: #f87171;
             --wrong-bg: #7f1a1a;
-            --wrong-border: #f87171;
-            --header-bg: rgba(15, 23, 42, 0.9);
-            --footer-text: #94a3b8;
-            --icon-color: #facc15;
+            --header: #1e293b;
+            background: var(--bg);
+            color: var(--text);
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        /* header */
-        .top-bar {
-            background: var(--header-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 2rem;
-            padding: 1rem 2rem;
+        /* الهيدر */
+        .header {
+            background: var(--header);
+            border-radius: 1.5rem;
+            padding: 1.2rem 2rem;
             margin-bottom: 2rem;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid var(--border);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
         .title h1 {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #2c7da0, #5fa7c2);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .title h1 i {
-            background: none;
-            color: #2c7da0;
-            margin-left: 8px;
-        }
-        .title p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
+            color: var(--btn);
         }
 
-        .chapter-actions {
+        .title p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .controls {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-        .chapter-btn {
-            background: var(--btn-bg);
-            padding: 0.5rem 1.2rem;
+
+        .chapters-btn {
+            background: var(--btn);
+            border: none;
+            padding: 0.6rem 1.3rem;
             border-radius: 2rem;
             color: white;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: none;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.2s;
+            font-family: 'Cairo', sans-serif;
         }
-        .chapter-btn:hover {
-            background: var(--btn-hover);
-            transform: scale(1.02);
-        }
-        .theme-toggle {
-            background: var(--card-bg);
+
+        .theme-btn {
+            background: var(--card);
             border: 1px solid var(--border);
             border-radius: 3rem;
-            width: 46px;
-            height: 46px;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: var(--icon-color);
-            transition: all 0.2s;
-        }
-        .theme-toggle:hover {
-            background: var(--focus-color);
-            color: white;
+            transition: 0.2s;
         }
 
-        /* questions grid */
-        .questions-grid {
+        /* بطاقات الأسئلة */
+        .questions-list {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.3rem;
         }
-        .q-card {
-            background: var(--card-bg);
-            border-radius: 1.5rem;
-            padding: 1.2rem 1.5rem;
+
+        .question-card {
+            background: var(--card);
+            border-radius: 1.2rem;
+            padding: 1.3rem;
             border: 1px solid var(--border);
-            box-shadow: var(--card-shadow);
-            transition: 0.1s;
+            transition: 0.2s;
         }
-        .q-text {
-            font-size: 1.1rem;
+
+        .question-text {
+            font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 1rem;
             line-height: 1.6;
-            color: var(--text-primary);
         }
+
         .blank {
             display: inline-block;
-            min-width: 110px;
-            background: var(--input-bg);
-            border-bottom: 3px dotted var(--focus-color);
-            font-weight: 800;
-            color: var(--focus-color);
-            margin: 0 5px;
-            padding: 0 6px;
+            min-width: 100px;
+            background: var(--input);
+            border-bottom: 3px dotted var(--btn);
+            padding: 0 5px;
+            color: var(--btn);
+            font-weight: bold;
         }
-        .input-row {
+
+        .input-area {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
-            align-items: center;
             margin: 0.8rem 0 0.5rem;
         }
-        .answer-field {
+
+        .answer-input {
             flex: 2;
-            min-width: 180px;
-            padding: 0.8rem 1rem;
+            min-width: 200px;
+            padding: 0.7rem 1rem;
             border-radius: 1rem;
-            border: 1.5px solid var(--input-border);
-            background: var(--input-bg);
-            font-family: 'Cairo', monospace;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            transition: 0.2s;
-        }
-        .answer-field:focus {
-            outline: none;
-            border-color: var(--focus-color);
-            box-shadow: 0 0 0 3px rgba(44,125,160,0.2);
-        }
-        .check-btn {
-            background: var(--btn-bg);
-            border: none;
-            padding: 0.7rem 1.6rem;
-            border-radius: 2rem;
+            border: 1.5px solid var(--border);
+            background: var(--input);
+            color: var(--text);
             font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--btn);
+        }
+
+        .check-btn {
+            background: var(--btn);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 2rem;
             color: white;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Cairo', sans-serif;
         }
-        .check-btn:hover {
-            background: var(--btn-hover);
-            transform: translateY(-1px);
-        }
+
         .feedback {
             margin-top: 0.6rem;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
             font-size: 0.85rem;
-            font-weight: 500;
-            padding: 0.4rem 0.8rem;
-            border-radius: 1rem;
             display: inline-block;
         }
+
         .feedback.correct {
             background: var(--correct-bg);
-            color: var(--correct-border);
-            border-right: 4px solid var(--correct-border);
+            color: var(--correct);
         }
+
         .feedback.wrong {
             background: var(--wrong-bg);
-            color: var(--wrong-border);
-            border-right: 4px solid var(--wrong-border);
+            color: var(--wrong);
         }
-        .small-note {
+
+        .hint {
             font-size: 0.7rem;
-            color: var(--footer-text);
+            color: var(--text-light);
             margin-top: 0.4rem;
         }
-        .footer-note {
-            margin-top: 2.5rem;
+
+        .footer {
             text-align: center;
+            margin-top: 2.5rem;
             padding-top: 1rem;
             border-top: 1px solid var(--border);
-            color: var(--footer-text);
+            color: var(--text-light);
             font-size: 0.8rem;
         }
-        @media (max-width: 650px) {
-            .top-bar { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .q-card { padding: 1rem; }
-            .input-row { flex-direction: column; align-items: stretch; }
+
+        @media (max-width: 600px) {
+            .header { flex-direction: column; text-align: center; }
+            .input-area { flex-direction: column; }
             .check-btn { justify-content: center; }
         }
     </style>
 </head>
-<body>
+<body class="light">
 <div class="container">
-    <div class="top-bar">
+    <div class="header">
         <div class="title">
             <h1><i class="fas fa-pen-fill"></i> أسئلة أكمل (الفصل الخامس)</h1>
-            <p><i class="fas fa-microphone-alt"></i> مادة تأخر الكلام | تدريبات من محتوى الفصل الأصلي</p>
+            <p><i class="fas fa-microphone-alt"></i> مادة تأخر الكلام | 20 سؤالاً من المحتوى الأصلي</p>
         </div>
-        <div class="chapter-actions">
-            <button class="chapter-btn" id="chaptersBtn"><i class="fas fa-book"></i> الفصول الأخرى</button>
-            <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
+        <div class="controls">
+            <button class="chapters-btn" id="chaptersBtn"><i class="fas fa-layer-group"></i> الفصول الأخرى</button>
+            <button class="theme-btn" id="themeBtn"><i class="fas fa-moon"></i></button>
         </div>
     </div>
 
-    <div class="questions-grid" id="questionsContainer"></div>
-    <div class="footer-note">
-        <i class="fas fa-lightbulb"></i> 20 سؤالاً من الفصل الخامس (تأخر الكلام) | املأ الفراغ ثم اضغط "تحقق"
+    <div class="questions-list" id="questionsList"></div>
+    <div class="footer">
+        <i class="fas fa-lightbulb"></i> كل سؤال به فراغ ..... اكتب الإجابة ثم اضغط "تحقق"
     </div>
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // 20 سؤالاً مستخرجة حرفياً من الفصل الخامس (ملف الوورد المرفق)
-    // الإجابات قصيرة (1-4 كلمات) حسب السياق
-    // --------------------------------------------------------------
-    const questions = [
+    // ========== 20 سؤال من الفصل الخامس (من ملف الوورد) ==========
+    const questionsData = [
         { text: "تبدأ عملية التدريب باكتساب الطفل حصيلة لغوية ........ وتعبيرية.", answer: "استقبالية" },
         { text: "من مهارات برامج المتأخرين لغوياً: مهارات وفق مبادئ تعديل ........ (تعزيز إيجابي/سلبي).", answer: "السلوك" },
         { text: "التدريب الفسيولوجي لأعضاء الجهاز الكلامي يتضمن إكساب الطفل التحكم في إيقاع الشهيق و ........", answer: "الزفير" },
@@ -307,122 +274,114 @@
         { text: "مراحل العلاج في نموذج ماكدونالد: تقليد المثيرات الحسية، تعزيز النطق الصحيح للصوت المعيب، تسهيل النطق الصحيح في ........ صوتية متنوعة.", answer: "سياقات" }
     ];
 
-    // التأكد من العدد
-    if(questions.length !== 20) console.warn("عدد الاسئلة:", questions.length);
-
-    function formatQuestionWithBlank(text) {
-        // استبدال ...... بعلامة توضيحية (......)
-        return text.replace(/\.\.\.\.\.\./g, '<span class="blank">......</span>');
-    }
-
+    // عرض الأسئلة
     function renderQuestions() {
-        const container = document.getElementById('questionsContainer');
+        const container = document.getElementById('questionsList');
         container.innerHTML = '';
-        questions.forEach((q, idx) => {
+
+        questionsData.forEach((q, index) => {
             const card = document.createElement('div');
-            card.className = 'q-card';
-            const questionNum = idx + 1;
-            const formattedText = formatQuestionWithBlank(q.text);
-            const inputId = `ans_${idx}`;
-            const feedbackId = `fb_${idx}`;
+            card.className = 'question-card';
+            
+            // استبدال النقاط بعلامة فارغة
+            const questionHtml = q.text.replace(/\.\.\.\.\.\./g, '<span class="blank">......</span>');
+            
             card.innerHTML = `
-                <div class="q-text">
-                    <span style="font-weight:800; margin-left:8px; color: var(--focus-color);">${questionNum}.</span>
-                    ${formattedText}
+                <div class="question-text">
+                    <span style="font-weight:800; margin-left:8px; color:var(--btn);">${index+1}.</span>
+                    ${questionHtml}
                 </div>
-                <div class="input-row">
-                    <input type="text" id="${inputId}" class="answer-field" placeholder="أكتب الإجابة هنا ..." autocomplete="off">
-                    <button class="check-btn" data-idx="${idx}"><i class="fas fa-check-circle"></i> تحقق</button>
+                <div class="input-area">
+                    <input type="text" class="answer-input" id="input_${index}" placeholder="اكتب الإجابة هنا..." autocomplete="off">
+                    <button class="check-btn" data-id="${index}"><i class="fas fa-check"></i> تحقق</button>
                 </div>
-                <div id="${feedbackId}" class="feedback"></div>
-                <div class="small-note"><i class="fas fa-edit"></i> الإجابة قصيرة (1-4 كلمات)</div>
+                <div id="feedback_${index}" class="feedback"></div>
+                <div class="hint"><i class="fas fa-edit"></i> الإجابة قصيرة (1-4 كلمات)</div>
             `;
             container.appendChild(card);
         });
 
-        // attach events
+        // إضافة حدث لكل زر تحقق
         document.querySelectorAll('.check-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const idx = parseInt(btn.getAttribute('data-idx'));
-                const inputEl = document.getElementById(`ans_${idx}`);
-                const userAnswer = inputEl.value.trim();
-                const correctAns = questions[idx].answer;
-                const feedbackDiv = document.getElementById(`fb_${idx}`);
+                const id = parseInt(btn.getAttribute('data-id'));
+                const input = document.getElementById(`input_${id}`);
+                const userAnswer = input.value.trim();
+                const correctAnswer = questionsData[id].answer;
+                const feedbackDiv = document.getElementById(`feedback_${id}`);
 
-                // normalization: remove extra spaces, punctuation, lowercase (arabic)
-                const normalize = (str) => str.trim().replace(/\s+/g, ' ').replace(/[،,؟?!]/g, '').toLowerCase();
-                const isCorrect = normalize(userAnswer) === normalize(correctAns);
-
-                if(isCorrect) {
-                    feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ إجابة صحيحة! (${correctAns})`;
+                // تطبيع النص للمقارنة
+                const normalize = (str) => str.trim().toLowerCase().replace(/\s+/g, ' ').replace(/[،,؟?!]/g, '');
+                
+                if (normalize(userAnswer) === normalize(correctAnswer)) {
+                    feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> صحيح! الإجابة: ${correctAnswer}`;
                     feedbackDiv.className = "feedback correct";
-                    inputEl.style.borderColor = "var(--correct-border)";
+                    input.style.borderColor = "var(--correct)";
                 } else {
-                    feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ خطأ. الإجابة الصحيحة: “${correctAns}”`;
+                    feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> خطأ. الإجابة الصحيحة: "${correctAnswer}"`;
                     feedbackDiv.className = "feedback wrong";
-                    inputEl.style.borderColor = "var(--wrong-border)";
+                    input.style.borderColor = "var(--wrong)";
                 }
-                // reset border on focus
-                inputEl.addEventListener('focus', () => {
-                    inputEl.style.borderColor = "var(--input-border)";
+                
+                // إعادة تعيين الحدود عند الكتابة مرة أخرى
+                input.addEventListener('focus', () => {
+                    input.style.borderColor = "var(--border)";
                 }, { once: true });
             });
         });
 
-        // enter key support
-        document.querySelectorAll('.answer-field').forEach((input, idx) => {
+        // الضغط على Enter
+        document.querySelectorAll('.answer-input').forEach((input, idx) => {
             input.addEventListener('keypress', (e) => {
-                if(e.key === 'Enter') {
-                    e.preventDefault();
-                    const btn = document.querySelector(`.check-btn[data-idx="${idx}"]`);
-                    if(btn) btn.click();
+                if (e.key === 'Enter') {
+                    const btn = document.querySelector(`.check-btn[data-id="${idx}"]`);
+                    if (btn) btn.click();
                 }
             });
         });
     }
 
-    // Dark/Light mode
+    // الثيم (وضع نهاري/ليلي)
     function initTheme() {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = stored || (prefersDark ? 'dark' : 'light');
-        if(theme === 'dark') {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.remove('light');
             document.body.classList.add('dark');
-            updateIcon(true);
+            document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>';
         } else {
             document.body.classList.remove('dark');
-            updateIcon(false);
+            document.body.classList.add('light');
+            document.getElementById('themeBtn').innerHTML = '<i class="fas fa-moon"></i>';
         }
     }
-    function updateIcon(isDark) {
-        const toggle = document.getElementById('themeToggle');
-        if(toggle) {
-            toggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        }
-    }
+
     function toggleTheme() {
-        const isDark = document.body.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        updateIcon(isDark);
-    }
-
-    // زر الفصول الأخرى (رسالة توضيحية + انتقال وهمي احترافي)
-    function setupChaptersButton() {
-        const btn = document.getElementById('chaptersBtn');
-        if(btn) {
-            btn.addEventListener('click', () => {
-                alert("📘 يمكنك إضافة روابط لباقي الفصول لاحقاً.\nحالياً تم تصميم الفصل الخامس بالكامل (20 سؤالاً من محتوى الملف الأصلي).\nيمكنك تخصيص الأزرار لتنتقل إلى فصول أخرى بسهولة.");
-            });
+        if (document.body.classList.contains('light')) {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+            localStorage.setItem('theme', 'light');
+            document.getElementById('themeBtn').innerHTML = '<i class="fas fa-moon"></i>';
         }
     }
 
+    // زر الفصول الأخرى
+    function setupChapters() {
+        document.getElementById('chaptersBtn').addEventListener('click', () => {
+            alert("📚 حاليًا يعرض الفصل الخامس.\nيمكن إضافة روابط لباقي الفصول بسهولة لاحقًا.");
+        });
+    }
+
+    // بدء التشغيل
     document.addEventListener('DOMContentLoaded', () => {
         renderQuestions();
         initTheme();
-        setupChaptersButton();
-        const themeBtn = document.getElementById('themeToggle');
-        if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
-        console.log("✅ موقع الفصل الخامس (تأخر الكلام) جاهز - 20 سؤالاً مأخوذة من النص الأصلي");
+        setupChapters();
+        document.getElementById('themeBtn').addEventListener('click', toggleTheme);
     });
 </script>
 </body>
