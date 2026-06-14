@@ -1,12 +1,21 @@
+رائع! 🚀 **بدأت العمل فورًا**
+
+بناءً على ملف Word الذي أرسلته (الفصل الخامس تأخر الكلام)، قمت باستخراج **20 سؤال أكمل** مباشرة من صلب المحتوى الأصلي — من المهارات الأساسية، التدريبات الفسيولوجية، الانتباه، المفاهيم اللغوية، الأنشطة، المناحي العلاجية، وغيرها.
+
+السؤال الواحد فيه فراغ `.....` والإجابة الصحيحة قصيرة (بحد أقصى 3-4 كلمات أو كلمة واحدة).  
+كل سؤال له زر "تحقق" خاص به، وفيه **وضع نهاري/ليلي**، وشريط علوي للفصول.
+
+الموقع جاهز للتشغيل فورًا 👇
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>اختبار أكمل | الفصل الخامس - تأخر الكلام</title>
-    <!-- Google Fonts: Cairo (professional Arabic) + Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (free icons) -->
+    <title>أسئلة أكمل | الفصل الخامس - تأخر الكلام</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -16,196 +25,176 @@
         }
 
         body {
-            font-family: 'Cairo', 'Inter', sans-serif;
-            background: var(--bg-gradient-start);
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
             color: var(--text-primary);
             transition: background 0.3s ease, color 0.2s ease;
-            line-height: 1.5;
+            padding: 2rem 1rem;
+            min-height: 100vh;
         }
 
-        /* Light Mode (default) */
+        /* Light mode (default) */
         :root {
-            --bg-gradient-start: #f4f7fc;
-            --bg-gradient-end: #e9eef3;
+            --bg-start: #f0f4f8;
+            --bg-end: #e2e8f0;
             --card-bg: #ffffff;
-            --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
-            --text-primary: #1a2c3e;
-            --text-secondary: #2c3e50;
-            --border-light: #e2e8f0;
+            --card-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            --text-primary: #0f2b3d;
+            --text-secondary: #2c5270;
+            --border: #e2edf2;
             --input-bg: #ffffff;
             --input-border: #cbd5e1;
-            --input-focus: #2c7da0;
-            --btn-check-bg: #2c7da0;
-            --btn-check-hover: #1f5e7a;
-            --btn-check-text: white;
-            --correct-bg: #e3f7ec;
-            --correct-border: #2b7e3a;
-            --wrong-bg: #fee9e6;
+            --focus-color: #2c7da0;
+            --btn-bg: #2c7da0;
+            --btn-hover: #1f5e7a;
+            --correct-bg: #e0f2e9;
+            --correct-border: #1e7b48;
+            --wrong-bg: #ffe6e5;
             --wrong-border: #c73e2d;
             --header-bg: rgba(255,255,255,0.85);
             --footer-text: #5a6e7c;
-            --icon-toggle: #2c3e50;
+            --icon-color: #1e4a6e;
         }
 
         body.dark {
-            --bg-gradient-start: #121826;
-            --bg-gradient-end: #1a202c;
+            --bg-start: #0f1724;
+            --bg-end: #111827;
             --card-bg: #1e293b;
-            --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+            --card-shadow: 0 20px 30px -8px rgba(0,0,0,0.5);
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e6;
-            --border-light: #2d3a4b;
+            --border: #334155;
             --input-bg: #0f172a;
-            --input-border: #334155;
-            --input-focus: #5f9ea0;
-            --btn-check-bg: #3b82f6;
-            --btn-check-hover: #2563eb;
-            --btn-check-text: white;
+            --input-border: #475569;
+            --focus-color: #3b82f6;
+            --btn-bg: #3b82f6;
+            --btn-hover: #2563eb;
             --correct-bg: #14532d;
             --correct-border: #4ade80;
             --wrong-bg: #7f1a1a;
             --wrong-border: #f87171;
-            --header-bg: rgba(18, 24, 38, 0.9);
+            --header-bg: rgba(15, 23, 42, 0.9);
             --footer-text: #94a3b8;
-            --icon-toggle: #facc15;
+            --icon-color: #facc15;
         }
 
-        body {
-            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
-
-        /* Container */
-        .quiz-container {
+        .container {
             max-width: 1100px;
             margin: 0 auto;
-            position: relative;
         }
 
-        /* Header area */
-        .header-card {
+        /* header */
+        .top-bar {
             background: var(--header-bg);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
             border-radius: 2rem;
-            padding: 1.2rem 2rem;
+            padding: 1rem 2rem;
             margin-bottom: 2rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
-        .title-section h1 {
+        .title h1 {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #2c7da0, #61a5c2);
+            background: linear-gradient(135deg, #2c7da0, #5fa7c2);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
         }
-
-        .title-section h1 i {
+        .title h1 i {
             background: none;
-            -webkit-background-clip: unset;
             color: #2c7da0;
-            margin-left: 10px;
+            margin-left: 8px;
         }
-
-        .title-section p {
+        .title p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 6px;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
-        .controls {
+        .chapter-actions {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-
-        .theme-toggle {
-            background: var(--card-bg);
-            border: 1px solid var(--border-light);
-            border-radius: 3rem;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.4rem;
-            transition: all 0.2s;
-            color: var(--icon-toggle);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.05);
-            background: var(--input-focus);
-            color: white;
-        }
-
-        .chapter-badge {
-            background: var(--btn-check-bg);
+        .chapter-btn {
+            background: var(--btn-bg);
             padding: 0.5rem 1.2rem;
             border-radius: 2rem;
             color: white;
             font-weight: 700;
             font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .chapter-btn:hover {
+            background: var(--btn-hover);
+            transform: scale(1.02);
+        }
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 3rem;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--icon-color);
+            transition: all 0.2s;
+        }
+        .theme-toggle:hover {
+            background: var(--focus-color);
+            color: white;
         }
 
-        /* Questions grid */
+        /* questions grid */
         .questions-grid {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
-
-        /* Card per question */
-        .question-card {
+        .q-card {
             background: var(--card-bg);
             border-radius: 1.5rem;
-            box-shadow: var(--card-shadow);
             padding: 1.2rem 1.5rem;
-            transition: transform 0.1s ease, box-shadow 0.2s;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            transition: 0.1s;
         }
-
-        .question-text {
-            font-size: 1.15rem;
+        .q-text {
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 1rem;
             line-height: 1.6;
             color: var(--text-primary);
-            background: rgba(0,0,0,0.02);
-            padding: 0.5rem 0;
         }
-
-        .blank-line {
+        .blank {
             display: inline-block;
             min-width: 110px;
             background: var(--input-bg);
-            border-bottom: 3px dotted var(--btn-check-bg);
+            border-bottom: 3px dotted var(--focus-color);
             font-weight: 800;
-            color: var(--btn-check-bg);
-            margin: 0 4px;
+            color: var(--focus-color);
+            margin: 0 5px;
             padding: 0 6px;
         }
-
-        .input-area {
+        .input-row {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             gap: 0.8rem;
+            align-items: center;
             margin: 0.8rem 0 0.5rem;
         }
-
-        .answer-input {
+        .answer-field {
             flex: 2;
             min-width: 180px;
             padding: 0.8rem 1rem;
@@ -216,330 +205,235 @@
             font-size: 0.95rem;
             color: var(--text-primary);
             transition: 0.2s;
-            font-weight: 500;
         }
-
-        .answer-input:focus {
+        .answer-field:focus {
             outline: none;
-            border-color: var(--input-focus);
+            border-color: var(--focus-color);
             box-shadow: 0 0 0 3px rgba(44,125,160,0.2);
         }
-
         .check-btn {
-            background: var(--btn-check-bg);
+            background: var(--btn-bg);
             border: none;
             padding: 0.7rem 1.6rem;
             border-radius: 2rem;
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
             font-size: 0.9rem;
-            color: var(--btn-check-text);
+            color: white;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
         .check-btn:hover {
-            background: var(--btn-check-hover);
+            background: var(--btn-hover);
             transform: translateY(-1px);
         }
-
         .feedback {
-            margin-top: 0.7rem;
+            margin-top: 0.6rem;
             font-size: 0.85rem;
             font-weight: 500;
             padding: 0.4rem 0.8rem;
             border-radius: 1rem;
             display: inline-block;
-            transition: 0.2s;
         }
-
         .feedback.correct {
             background: var(--correct-bg);
             color: var(--correct-border);
             border-right: 4px solid var(--correct-border);
-            padding-right: 12px;
         }
-
         .feedback.wrong {
             background: var(--wrong-bg);
             color: var(--wrong-border);
             border-right: 4px solid var(--wrong-border);
-            padding-right: 12px;
         }
-
-        .feedback i {
-            margin-left: 6px;
-        }
-
-        /* footer note */
-        .footer-note {
-            text-align: center;
-            margin-top: 2.5rem;
-            font-size: 0.85rem;
-            color: var(--footer-text);
-            border-top: 1px solid var(--border-light);
-            padding-top: 1.5rem;
-        }
-
-        @media (max-width: 680px) {
-            .header-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            .controls {
-                align-self: flex-start;
-            }
-            .question-card {
-                padding: 1rem;
-            }
-            .input-area {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .check-btn {
-                justify-content: center;
-            }
-        }
-
-        .small-hint {
+        .small-note {
             font-size: 0.7rem;
             color: var(--footer-text);
-            margin-top: 0.3rem;
+            margin-top: 0.4rem;
+        }
+        .footer-note {
+            margin-top: 2.5rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--footer-text);
+            font-size: 0.8rem;
+        }
+        @media (max-width: 650px) {
+            .top-bar { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .q-card { padding: 1rem; }
+            .input-row { flex-direction: column; align-items: stretch; }
+            .check-btn { justify-content: center; }
         }
     </style>
 </head>
 <body>
-<div class="quiz-container">
-    <div class="header-card">
-        <div class="title-section">
+<div class="container">
+    <div class="top-bar">
+        <div class="title">
             <h1><i class="fas fa-pen-fill"></i> أسئلة أكمل (الفصل الخامس)</h1>
-            <p><i class="fas fa-microphone-alt"></i> مادة تأخر الكلام | تدريبات تفاعلية لإكمال الفراغات</p>
+            <p><i class="fas fa-microphone-alt"></i> مادة تأخر الكلام | تدريبات من محتوى الفصل الأصلي</p>
         </div>
-        <div class="controls">
-            <div class="chapter-badge"><i class="fas fa-book-open"></i> الفصل الخامس • 20 سؤالاً</div>
-            <div class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </div>
+        <div class="chapter-actions">
+            <button class="chapter-btn" id="chaptersBtn"><i class="fas fa-book"></i> الفصول الأخرى</button>
+            <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
         </div>
     </div>
 
     <div class="questions-grid" id="questionsContainer"></div>
     <div class="footer-note">
-        <i class="fas fa-lightbulb"></i> كل سؤال يحتوي على فراغ (....). اكتب الإجابة ثم اضغط "تحقق" | الإجابات لا تتجاوز 3-4 كلمات
+        <i class="fas fa-lightbulb"></i> 20 سؤالاً من الفصل الخامس (تأخر الكلام) | املأ الفراغ ثم اضغط "تحقق"
     </div>
 </div>
 
 <script>
-    // ------------------------------------------------------------------
-    // 20 أسئلة أكمل خاصة بالفصل الخامس (تأخر الكلام)
-    // كل سؤال يحتوي على نص به فراغ ..... ويتم توفير الإجابة الصحيحة
-    // الإجابات مختصرة (1-4 كلمات) حسب الطلب
-    // ------------------------------------------------------------------
-    const questionsData = [
-        { text: "يُعرف تأخر الكلام بأنه تأخر ظهور مهارات ........ مقارنة بالأطفال في نفس العمر.", answer: "اللغة والتواصل" },
-        { text: "من الأسباب العضوية الشائعة لتأخر الكلام: ضعف السمع أو ........", answer: "اضطرابات عصبية" },
-        { text: "عمر الطفل الذي يُقلق إذا لم ينطق أي كلمة مفهومة هو حوالي ........ شهراً.", answer: "18 شهراً" },
-        { text: "تعتبر مرحلة ........ من العوامل البيئية الهامة لتطور اللغة.", answer: "التفاعل الأسري" },
-        { text: "اضطراب ........ الحركي للكلام يؤثر على قدرة الطفل على نطق الأصوات.", answer: "البراكسيا" }, // apraxia
-        { text: "يجب استشارة أخصائي ........ عند ملاحظة تأخر ملحوظ في مهارات الكلام.", answer: "النطق واللغة" },
-        { text: "من علامات الخطر المبكرة: عدم المناغاة في عمر ........ أشهر.", answer: "6 أشهر" },
-        { text: "تشير الدراسات إلى أن ........ المبكر يحسن prognosis تأخر الكلام.", answer: "التدخل المبكر" },
-        { text: "تقييم السمع جزء أساسي من ........ تشخيصي لتأخر الكلام.", answer: "البروتوكول" },
-        { text: "الطفل ذو ........ الانتباه قد يظهر تأخرًا ثانويًا في الكلام.", answer: "اضطراب فرط الحركة" },
-        { text: "تعد ........ التفاعلية (مثل القصص واللعب) من أفضل الاستراتيجيات المنزلية.", answer: "الأنشطة" },
-        { text: "مرحلة ما قبل اللغة تشمل المناغاة والاستدارة نحو ........", answer: "مصدر الصوت" },
-        { text: "من العلامات الإيجابية: وجود فهم جيد للغة رغم ........ في الإنتاج.", answer: "القصور التعبيري" },
-        { text: "عند الطفل التوحدي، قد يكون تأخر الكلام مصحوباً بضعف ........ الاجتماعي.", answer: "التواصل" },
-        { text: "يُستخدم اختبار ........ لتقييم القدرات اللغوية الاستقبالية والتعبيرية.", answer: "مقياس اللغة" },
-        { text: "تؤثر ........ المتكررة بالأذن الوسطى على وضوح السماع وبالتالي ........", answer: "التهابات الأذن" },
-        { text: "برنامج ........ يعتمد على تعزيز المحاولات اللفظية لتحفيز الكلام.", answer: "التدريب اللفظي" },
-        { text: "كلما زادت المفردات التي يفهمها الطفل (المفردات ........) كلما تحسن النطق.", answer: "الاستقبالية" },
-        { text: "من المهم أن يُميز الأهل بين تأخر الكلام و ........ اضطرابات اللغة.", answer: "اضطراب اللغة" }, 
-        { text: "القراءة اليومية للطفل تعزز ........ اللغوي وتثري حصيلته.", answer: "التطور" }
+    // --------------------------------------------------------------
+    // 20 سؤالاً مستخرجة حرفياً من الفصل الخامس (ملف الوورد المرفق)
+    // الإجابات قصيرة (1-4 كلمات) حسب السياق
+    // --------------------------------------------------------------
+    const questions = [
+        { text: "تبدأ عملية التدريب باكتساب الطفل حصيلة لغوية ........ وتعبيرية.", answer: "استقبالية" },
+        { text: "من مهارات برامج المتأخرين لغوياً: مهارات وفق مبادئ تعديل ........ (تعزيز إيجابي/سلبي).", answer: "السلوك" },
+        { text: "التدريب الفسيولوجي لأعضاء الجهاز الكلامي يتضمن إكساب الطفل التحكم في إيقاع الشهيق و ........", answer: "الزفير" },
+        { text: "من تدريبات المضغ والنفخ والمس: التدريب على المص، النفخ (قصفات ورق، إطفاء ........).", answer: "شموع" },
+        { text: "تدريبات تقوية هواء الزفير تشمل أخذ نفس عميق، حبسه، إخراجه ........", answer: "ببطء" },
+        { text: "تدريبات اللسان تشمل التحكم بحركات اللسان: إخراج، تحريك، رفع الأجزاء ........ والأمامي.", answer: "الخلفي" },
+        { text: "الانتباه يعتبر عنصراً ........ فبدونه لا فائدة من التعليمات.", answer: "أساسي" },
+        { text: "من أهداف التدريب على الانتباه: تنمية الحصيلة اللغوية الداخلية (لفظية وغير لفظية) القائمة على ........", answer: "التقليد" },
+        { text: "تنمية المفاهيم اللغوية تشمل البيئة المنزلية، البيئة المدرسية، البيئة ........", answer: "الخارجية" },
+        { text: "من أنشطة زيادة الحصيلة اللغوية: الغناء، حفظ الأناشيد المصورة، اللعب ........ والإيهامي.", answer: "التمثيلي" },
+        { text: "من أنشطة اكتساب المدلول اللفظي: الأضداد (كبير/صغير، طويل/قصير، خفيف/........)", answer: "ثقيل" },
+        { text: "العلاقات المكانية تشمل: فوق/تحت، بين، يمين/يسار، قدام/ورا، قريب/بعيد، جوه/........", answer: "بره" },
+        { text: "أنشطة اللعب الإيهامي تستخدم العرائس والدمى لتكوين علاقة وحوار، مما ينمي التركيز والانتباه و........", answer: "التقليد" },
+        { text: "القصص الوصفية يفضل أن تحتوي على جمل مركبة (لا تزيد عن 4 جمل) وتتضمن ........ الأشياء.", answer: "وصف" },
+        { text: "المعززات الاجتماعية والنشاطية: الخروج للحدائق، الثناء، المدح، التصفيق لل........", answer: "الآخرين" },
+        { text: "من سمات أخصائي التخاطب: روح الحس والتعاطف مع الحالة، والود و........", answer: "المحبة" },
+        { text: "الاتجاه التقليدي يعتمد على التدريب ........ كمرحلة سابقة على إنتاج الصوت.", answer: "السمعي" },
+        { text: "في مدخل السمات المميزة، الهدف مساعدة الطفل على تعلم قواعد النسق الفونولوجي للراشدين وتعلم ........ المميزة.", answer: "السمات" },
+        { text: "اتجاه ماكدونالد ينتقد التأكيد على التدريب السمعي فقط (قناة حسية واحدة) وعدم الاستفادة من ........ الأخرى.", answer: "القنوات" },
+        { text: "مراحل العلاج في نموذج ماكدونالد: تقليد المثيرات الحسية، تعزيز النطق الصحيح للصوت المعيب، تسهيل النطق الصحيح في ........ صوتية متنوعة.", answer: "سياقات" }
     ];
 
-    // Ensuring we have exactly 20 questions
-    if (questionsData.length !== 20) console.warn("عدد الأسئلة ليس 20, حالياً: ", questionsData.length);
-    // However we have 20 entries correctly
+    // التأكد من العدد
+    if(questions.length !== 20) console.warn("عدد الاسئلة:", questions.length);
 
-    // Helper: replace blanks in display text with elegant dotted placeholder
-    function formatQuestionText(rawText) {
-        // If raw text contains "........" already (as we wrote) but we want to highlight the blank as a styled element.
-        // We'll replace every occurrence of "........" with a <span class="blank-line">......</span>
-        // but preserve the structure for clarity: we replace each "........" (dots count may vary but we keep consistency)
-        let formatted = rawText.replace(/\.\.\.\.\.\.\.\./g, '<span class="blank-line">......</span>');
-        // also handle if there are "...." but we have exactly 8 dots in template. anyway.
-        return formatted;
+    function formatQuestionWithBlank(text) {
+        // استبدال ...... بعلامة توضيحية (......)
+        return text.replace(/\.\.\.\.\.\./g, '<span class="blank">......</span>');
     }
 
-    // Function to render all questions dynamically
     function renderQuestions() {
         const container = document.getElementById('questionsContainer');
         container.innerHTML = '';
-        questionsData.forEach((item, idx) => {
+        questions.forEach((q, idx) => {
             const card = document.createElement('div');
-            card.className = 'question-card';
-            const questionNumber = idx + 1;
-            const formattedQuestion = formatQuestionText(item.text);
-            // Create unique IDs for input & feedback
-            const inputId = `input_${idx}`;
-            const feedbackId = `feedback_${idx}`;
-            
+            card.className = 'q-card';
+            const questionNum = idx + 1;
+            const formattedText = formatQuestionWithBlank(q.text);
+            const inputId = `ans_${idx}`;
+            const feedbackId = `fb_${idx}`;
             card.innerHTML = `
-                <div class="question-text">
-                    <span style="font-weight:800; margin-left:8px; color: var(--btn-check-bg);">${questionNumber}.</span>
-                    ${formattedQuestion}
+                <div class="q-text">
+                    <span style="font-weight:800; margin-left:8px; color: var(--focus-color);">${questionNum}.</span>
+                    ${formattedText}
                 </div>
-                <div class="input-area">
-                    <input type="text" id="${inputId}" class="answer-input" placeholder="أكتب الكلمة أو العبارة ..." autocomplete="off">
+                <div class="input-row">
+                    <input type="text" id="${inputId}" class="answer-field" placeholder="أكتب الإجابة هنا ..." autocomplete="off">
                     <button class="check-btn" data-idx="${idx}"><i class="fas fa-check-circle"></i> تحقق</button>
                 </div>
                 <div id="${feedbackId}" class="feedback"></div>
-                <div class="small-hint"><i class="fas fa-edit"></i> الإجابة قصيرة (1-4 كلمات)</div>
+                <div class="small-note"><i class="fas fa-edit"></i> الإجابة قصيرة (1-4 كلمات)</div>
             `;
             container.appendChild(card);
         });
 
-        // Attach event listeners to all check buttons
+        // attach events
         document.querySelectorAll('.check-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const idx = parseInt(btn.getAttribute('data-idx'));
-                const inputField = document.getElementById(`input_${idx}`);
-                const userAnswerRaw = inputField.value.trim();
-                const correctAnswerRaw = questionsData[idx].answer;
-                const feedbackDiv = document.getElementById(`feedback_${idx}`);
-                
-                // Normalization: remove extra spaces, punctuation optional, case insensitive (but arabic letters)
-                // We'll create a normalized comparison: trim, collapse spaces, remove diacritics? but simple lowercasing for arabic is fine.
-                const normalize = (str) => {
-                    return str.trim()
-                        .replace(/\s+/g, ' ')
-                        .replace(/[،,؟?!;؛]/g, '')
-                        .toLowerCase();
-                };
-                const userNorm = normalize(userAnswerRaw);
-                const correctNorm = normalize(correctAnswerRaw);
-                
-                // Additional flexibility: if user answer includes extra common synonyms? but we stick exact matching with tolerance of minor typos? 
-                // For professional but fair, we match exact after normalization.
-                let isCorrect = (userNorm === correctNorm);
-                // Edge: some correct answers might have alternative forms? given data concise. if not matching but very close we show hint
-                if (!isCorrect) {
-                    // additional check: maybe user forgot "الـ" but answer has? simple partial but strict to teach. we'll keep standard.
-                    // we could show small suggestion but maintain reliability.
-                }
-                
-                if (isCorrect) {
-                    feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> إجابة صحيحة! ✔️ (${correctAnswerRaw})`;
+                const inputEl = document.getElementById(`ans_${idx}`);
+                const userAnswer = inputEl.value.trim();
+                const correctAns = questions[idx].answer;
+                const feedbackDiv = document.getElementById(`fb_${idx}`);
+
+                // normalization: remove extra spaces, punctuation, lowercase (arabic)
+                const normalize = (str) => str.trim().replace(/\s+/g, ' ').replace(/[،,؟?!]/g, '').toLowerCase();
+                const isCorrect = normalize(userAnswer) === normalize(correctAns);
+
+                if(isCorrect) {
+                    feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ إجابة صحيحة! (${correctAns})`;
                     feedbackDiv.className = "feedback correct";
-                    inputField.style.borderColor = "#2b7e3a";
+                    inputEl.style.borderColor = "var(--correct-border)";
                 } else {
-                    feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> إجابة غير صحيحة. الإجابة الصحيحة: “${correctAnswerRaw}”`;
+                    feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ خطأ. الإجابة الصحيحة: “${correctAns}”`;
                     feedbackDiv.className = "feedback wrong";
-                    inputField.style.borderColor = "#c73e2d";
-                    setTimeout(() => {
-                        if (document.activeElement !== inputField) {
-                            // keep border but reset after 2 sec? optional
-                        }
-                    }, 100);
+                    inputEl.style.borderColor = "var(--wrong-border)";
                 }
-                // small animation: reset border after 2 seconds on blur?
-                inputField.addEventListener('focus', () => {
-                    inputField.style.borderColor = "var(--input-border)";
-                });
+                // reset border on focus
+                inputEl.addEventListener('focus', () => {
+                    inputEl.style.borderColor = "var(--input-border)";
+                }, { once: true });
             });
         });
-        
-        // Extra: enable pressing Enter in any input to trigger adjacent check
-        document.querySelectorAll('.answer-input').forEach((input, idx) => {
+
+        // enter key support
+        document.querySelectorAll('.answer-field').forEach((input, idx) => {
             input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
+                if(e.key === 'Enter') {
                     e.preventDefault();
                     const btn = document.querySelector(`.check-btn[data-idx="${idx}"]`);
-                    if (btn) btn.click();
+                    if(btn) btn.click();
                 }
             });
         });
     }
 
-    // dark mode / light mode toggle with icon switch + localstorage
+    // Dark/Light mode
     function initTheme() {
-        const storedTheme = localStorage.getItem('theme');
+        const stored = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        let theme = storedTheme;
-        if (!theme) {
-            theme = prefersDark ? 'dark' : 'light';
-        }
-        if (theme === 'dark') {
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        if(theme === 'dark') {
             document.body.classList.add('dark');
-            updateToggleIcon(true);
+            updateIcon(true);
         } else {
             document.body.classList.remove('dark');
-            updateToggleIcon(false);
+            updateIcon(false);
         }
     }
-
-    function updateToggleIcon(isDark) {
+    function updateIcon(isDark) {
         const toggle = document.getElementById('themeToggle');
-        if (toggle) {
-            if (isDark) {
-                toggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                toggle.innerHTML = '<i class="fas fa-moon"></i>';
-            }
+        if(toggle) {
+            toggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         }
     }
-
     function toggleTheme() {
         const isDark = document.body.classList.toggle('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        updateToggleIcon(isDark);
+        updateIcon(isDark);
     }
-    
-    // Verify each question answer length constraint (1-4 words approx)
-    function validateAnswersLength() {
-        for(let i=0; i<questionsData.length; i++) {
-            const ans = questionsData[i].answer;
-            const wordCount = ans.split(/\s+/).filter(w => w.length > 0).length;
-            if(wordCount > 4) {
-                console.warn(`السؤال ${i+1} : الإجابة "${ans}" تحتوي على ${wordCount} كلمات >4، لكن مقبولة للمحتوى العلمي.`);
-            }
+
+    // زر الفصول الأخرى (رسالة توضيحية + انتقال وهمي احترافي)
+    function setupChaptersButton() {
+        const btn = document.getElementById('chaptersBtn');
+        if(btn) {
+            btn.addEventListener('click', () => {
+                alert("📘 يمكنك إضافة روابط لباقي الفصول لاحقاً.\nحالياً تم تصميم الفصل الخامس بالكامل (20 سؤالاً من محتوى الملف الأصلي).\nيمكنك تخصيص الأزرار لتنتقل إلى فصول أخرى بسهولة.");
+            });
         }
     }
-    
-    // Also for each question text ensure there is a blank placeholder. 
-    // All questions contain "........" which we replaced, but double-check
-    function ensureBlanks() {
-        for(let i=0; i<questionsData.length; i++) {
-            if(!questionsData[i].text.includes('........')) {
-                console.warn(`السؤال ${i+1} يفتقر إلى فراغ (........) سيتم إضافة فراغ افتراضي`);
-                // in such rare case modify accordingly but our data all have it.
-            }
-        }
-    }
-    
-    // Add a subtle effect: progress summary if needed but fine
-    
-    // ---------- Additional feature: show overview of all answers via console? not needed
-    // But we want super professional: add a smooth scroll & accessibility
-    
-    // Render on page load + validation + theme
+
     document.addEventListener('DOMContentLoaded', () => {
         renderQuestions();
         initTheme();
-        validateAnswersLength();
-        ensureBlanks();
-        const toggleBtn = document.getElementById('themeToggle');
-        if(toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
-        
-        // Add a small note if any answer length >4 to console but not disrupt user
-        console.log("تم تحميل أسئلة الفصل الخامس (تأخر الكلام) بنجاح ✅");
+        setupChaptersButton();
+        const themeBtn = document.getElementById('themeToggle');
+        if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+        console.log("✅ موقع الفصل الخامس (تأخر الكلام) جاهز - 20 سؤالاً مأخوذة من النص الأصلي");
     });
 </script>
 </body>
 </html>
+```
